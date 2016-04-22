@@ -13,7 +13,7 @@ public class Hippodrome
     public static ArrayList<Horse> horses = new ArrayList<>();
     public static ArrayList<Horse> getHorses()
     {
-        return horses;
+        return horses;//
     }
 }
 
