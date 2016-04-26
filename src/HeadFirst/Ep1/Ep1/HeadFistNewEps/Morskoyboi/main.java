@@ -4,9 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-/**
- * Created by Администратор on 25.04.2016.
- */
+
 public class main
 {
     public static void main(String[] args)
@@ -26,7 +24,7 @@ public class main
         numberOfGueses++;
         if(result.equals("Sink!")){
             isalive = false;
-            System.out.println("Вам потребовалось "+ numberOfGueses + " trys");
+            System.out.println("You need only "+ numberOfGueses + " trys");
         }
 
 

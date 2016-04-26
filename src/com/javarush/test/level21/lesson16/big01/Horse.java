@@ -43,4 +43,16 @@ public class Horse
     {
         this.speed = speed;
     }
+    public void move(){
+        distance+=speed*Math.random();
+    }
+    public void print(){
+        int var = (int)distance;
+        for(int i = 0; i < var; i++){
+            System.out.print(".");
+        }
+        System.out.print(name);
+        System.out.println(" ");
+        System.out.println(" ");
+    }
 }

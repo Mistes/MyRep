@@ -4,9 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-/**
- * Created by Администратор on 25.04.2016.
- */
 public class GameHelper
 {
     public String getUserInput(String promt){
