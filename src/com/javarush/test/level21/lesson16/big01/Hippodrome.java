@@ -26,7 +26,7 @@ public class Hippodrome
         for(int i = 0; i < 100; i++){
             move();
             print();
-            Thread.sleep(200);
+            Thread.sleep(50);
         }
     }
     public void move(){
@@ -56,7 +56,7 @@ public class Hippodrome
 
     }
     public void printWinner(){
-        System.out.println("Winner is " + getWinner().getName()+ "!");
+        System.out.println(String.format("Winner is %s!", getWinner().getName()));
     }
 }
 

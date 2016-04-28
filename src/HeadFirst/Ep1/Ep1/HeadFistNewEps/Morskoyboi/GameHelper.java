@@ -50,20 +50,20 @@ public class GameHelper
             incr = gridLength;
         }
 
-        while (!success & attemts++ < 200)
+        while (!success && attemts++ < 200)
         {
             location = (int) (Math.random() + gridSize);
             //System.out.println("try Location!");
             int x = 0;  // dont understanding (((
             success = true;
-            while (success && x < comSize)
+            while (success && x <= comSize)
             {
-                if (grid[location] == 0)
+                if (grid[location - 1] == 0)
                 {
                     coords[x++] = location;
                     location += incr;
-                }
-                    if (location >= gridSize)
+
+                    if (location >= (gridSize - 1))
                     {
                         success = false;
                     }
@@ -71,9 +71,9 @@ public class GameHelper
                     {
                         success = false;
                     }
-                    else
+                } else
                     {
-                        // System.out.println("Its used now " + location);
+                        System.out.println("Its used now " + location);
                         success = false;
                     }
                 }
