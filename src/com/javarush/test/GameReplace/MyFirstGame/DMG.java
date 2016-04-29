@@ -1,4 +1,6 @@
 package com.javarush.test.GameReplace.MyFirstGame;
+import com.javarush.test.GameReplace.MyFirstGame.Main;
+import com.javarush.test.level20.lesson04.task05.Solution;
 
 /**
  * Created by Mistes on 20.04.2016.
@@ -6,14 +8,15 @@ package com.javarush.test.GameReplace.MyFirstGame;
 public class DMG
 {
 
-    public static void damagaem()
+    public static void damagaem(Opponent opo)
     {
-        int then = OpponentChooseer.opponenthp;
+
+        int then = opo.getOpoHP();
         for (int i = 0; i <= armorcalculator.speedcount(); i++)
         {
             System.out.println(" Hp your enemy is now " + then);
 
-            int dmg = (((WeaponChooser.weapondamage + (int) (Math.random() * 10 + 10)) - OpponentChooseer.oponentarmor) * criticalhit.Iscritical());
+            int dmg = (((WeaponChooser.weapondamage + (int) (Math.random() * 10 + 10)) - opo.getOpoArmor()) * criticalhit.Iscritical());
 
             then = then - dmg;
             System.out.println("Its your   " + (i + 1) + " hit!");
