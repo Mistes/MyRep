@@ -15,6 +15,7 @@ public class armorchooser
     public static int chestmove;
     public static int legmove;
 
+
     public static void HeadChooseer()
     {
         try

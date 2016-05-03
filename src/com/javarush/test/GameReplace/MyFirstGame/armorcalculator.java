@@ -12,12 +12,12 @@ public class armorcalculator
 
     public static int SpeedAmmount()
     {
-        return armorchooser.chestmove + armorchooser.headmove + armorchooser.legmove + WeaponChooser.weaponspeed;
+        return armorchooser.chestmove;// + armorchooser.headmove + armorchooser.legmove + WeaponChooser.weaponspeed;
     }
 
     public static int speedcount()
     {
-        int a = armorchooser.chestmove + armorchooser.headmove + armorchooser.legmove + WeaponChooser.weaponspeed;
+        int a = armorchooser.chestmove;// + armorchooser.headmove + armorchooser.legmove + WeaponChooser.weaponspeed;
 
         if (a < 25)
             return 2;
