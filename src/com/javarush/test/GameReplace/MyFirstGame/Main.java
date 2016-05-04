@@ -17,15 +17,16 @@ public class Main
 
     public void gamebody() throws InterruptedException
     {
+        SpeedCalculator player1calc = new SpeedCalculator();
         Person player1 = new Person();
         Opponent opo = new Opponent();
-        Weapon weapon = new Weapon();
-        Armor armor = new Armor();
+        Weapon weapon1 = new Weapon();
+        Armor armor1 = new Armor();
         Weapon weapon2 = new Weapon();
         player1.PersonChooserV2();
         opo.ChooserMethod();
-        weapon.WeaponChooserV2();
-        armor.ArmorChooserV2();
+        weapon1.WeaponChooserV2();
+        armor1.ArmorChooserV2();
         //weapon2.WeaponChooserV2();
         //System.out.println("Player1 choosed " +weapon.getWepname());
         //System.out.println("Player2 choosed " + weapon2.getWepname());
@@ -37,12 +38,12 @@ public class Main
 
 
         int then = opo.getOpoHP();
-        for (int i = 0; i <= armorcalculator.speedcount(); i++)
+        for (int i = 0; i <= player1calc.speedCalcPVE(armor1, weapon1, player1); i++)
         {
             Thread.sleep(1000);
             System.out.println(" Hp your enemy is now " + then);
 
-            int dmg = ((((weapon.getWepdamage()) + (int) (Math.random() * 20 + 1)) - opo.getOpoArmor()) * criticalhit.Iscritical());
+            int dmg = ((((weapon1.getWepdamage()) + (int) (Math.random() * 20 + 1)) - opo.getOpoArmor()) * criticalhit.Iscritical());
 
             then = then - dmg;
             System.out.println("Its your   " + (i + 1) + " hit!");
@@ -53,7 +54,7 @@ public class Main
                 System.out.println("Your enemy is died! YOU ARE BRUTAL MURDERER!!!");
                 break;
             }
-            if (i == armorcalculator.speedcount())
+            if (i == player1calc.speedCalcPVE(armor1, weapon1, player1))
             {
                 System.out.println("Your enemy still alive.YOU ARE JERK ! Your foe have left  only " + then + " HP");
                 ;

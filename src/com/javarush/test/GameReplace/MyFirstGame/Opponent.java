@@ -16,6 +16,12 @@ public class Opponent
     private int oponentarmor;
     private int oponenthp;
     private String oponame;
+    private int opodamage;
+
+    public int getOpodamage()
+    {
+        return opodamage;
+    }
 
     public int getOpoHP()
     {
@@ -45,9 +51,9 @@ public class Opponent
 
     public void SetEnemies()
     {
-        Foe miniorc = new Foe(20, 215, "ORC!!!");
-        Foe miniPrincess = new Foe(10, 150, "So cute princess!");
-        Foe miniDragon = new Foe(5, 400, "Really impressive DRAGON!");
+        Foe miniorc = new Foe(20, 215, "ORC!!!", 60);
+        Foe miniPrincess = new Foe(10, 150, "So cute princess!", 40);
+        Foe miniDragon = new Foe(5, 400, "Really impressive DRAGON!", 100);
         opmap.put(1, miniorc);
         opmap.put(2, miniPrincess);
         opmap.put(3, miniDragon);
@@ -110,12 +116,14 @@ public class Opponent
         private int armor;
         private int hp;
         private String name;
+        private int damage;
 
-        Foe(int armor, int hp, String name)
+        Foe(int armor, int hp, String name, int damage)
         {
             this.armor = armor;
             this.hp = hp;
             this.name = name;
+            this.damage = damage;
         }
 
         public int getArmor()
@@ -131,6 +139,11 @@ public class Opponent
         public String getName()
         {
             return name;
+        }
+
+        public int getDamage()
+        {
+            return damage;
         }
     }
 }
