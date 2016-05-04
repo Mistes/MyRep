@@ -85,7 +85,6 @@ public class Opponent
     catch (Exception e){
         System.out.println("You need to push only numbers from 1 to 3! But you pushed " + util.getImput()+ " And now all will start again!");
         ChooserMethod();
-
     }
     }
 

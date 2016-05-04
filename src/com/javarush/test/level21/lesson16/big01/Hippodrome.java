@@ -15,7 +15,7 @@ public class Hippodrome
         game = hipo;
         Horse bura = new Horse("Bura", 3, 0);
         Horse mega = new Horse("Mega", 3, 0);
-        Horse leka = new Horse("Leka", 3, 0);
+        Horse leka = new Horse("DekaN", 3, 0);
         game.getHorses().add(bura);
         game.getHorses().add(mega);
         game.getHorses().add(leka);

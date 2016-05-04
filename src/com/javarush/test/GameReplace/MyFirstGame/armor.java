@@ -2,7 +2,7 @@ package com.javarush.test.GameReplace.MyFirstGame;
 
 import java.util.HashMap;
 
-public class armor
+public class Armor
 {
     HashMap<Integer, ArmorComplect> oparm = new HashMap<>();
     Utill util = new Utill();
@@ -10,16 +10,11 @@ public class armor
     private int statyourhpbonus;
     private int statmovement;
 
-    public static void ArmorAnounce()
-    {
-        IronChest.call();
-        IronHelmet.call();
-        IronLegs.call();
-    }
+
 
     public void Armorcall()
     {
-
+        System.out.println(String.format("You choose %s, you really choose that?", oparm.get(util.getImput()).getName()));
     }
 
     public int getStatdefence()
@@ -48,6 +43,7 @@ public class armor
         oparm.put(3, mail);
         oparm.put(4, plate);
 
+
     }
 
     public void ArmorChooserV2()
@@ -59,82 +55,14 @@ public class armor
             statdefence = oparm.get(util.getImput()).getDefence();
             statmovement = oparm.get(util.getImput()).getMovement();
             statyourhpbonus = oparm.get(util.getImput()).getYourhpbonus();
-
-            //weaponcall();
+            Armorcall();
 
         }
         catch (NullPointerException e)
         {
             util.ReadInput("You need to push only numbers from 1 to 4! But you pushed " + util.getImput() + " And now all will start again!");
-            //WeaponChooserV2();
+            ArmorChooserV2();
 
-        }
-    }
-
-    public static class IronHelmet implements armorinterface.Helmets
-    {
-        private static int IronheadDefence = 12;
-        private static int movementInHead = 3;
-
-        public static void call()
-        {
-            System.out.println("You choose IRON HELMET!");
-
-        }
-
-        public static int getHeadDefence()
-        {
-            return IronheadDefence;
-        }
-
-        public static int getHeadMovement()
-        {
-            return movementInHead;
-        }
-    }
-
-    public static class IronChest implements armorinterface.Chests
-    {
-        private static int chestDefence = 18;
-        private static int movementInChest = 6;
-        IronChest ironChest = new IronChest();
-
-        public static void call()
-        {
-            System.out.println("You choose Iron Chest!");
-        }
-
-        public static int getChestDefence()
-        {
-            return chestDefence;
-        }
-
-        public static int getChestMovement()
-        {
-            return movementInChest;
-        }
-
-
-    }
-
-    public static class IronLegs implements armorinterface.Legs
-    {
-        private static int legDefence = 10;
-        private static int movementInLegs = 15;
-
-        public static void call()
-        {
-            System.out.println("You choose Iron Legs!");
-        }
-
-        public static int getLegDefence()
-        {
-            return legDefence;
-        }
-
-        public static int getLegMovement()
-        {
-            return movementInLegs;
         }
     }
 

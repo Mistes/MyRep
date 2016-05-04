@@ -15,10 +15,16 @@ public class Weapon
     private int wepaccuracy;
     private int wepcritchance;
     private int wepcritefectience;
+    private String wepname;
 
     public int getWepspeed()
     {
         return wepspeed;
+    }
+
+    public String getWepname()
+    {
+        return wepname;
     }
 
     public int getWepdamage()
@@ -70,6 +76,7 @@ public class Weapon
             wepaccuracy = opwep.get(util.getImput()).getAccuracy();
             wepcritchance = opwep.get(util.getImput()).getCritchance();
             wepcritefectience = opwep.get(util.getImput()).getCritefectience();
+            wepname = opwep.get(util.getImput()).getName();
             weaponcall();
 
         }
