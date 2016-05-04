@@ -53,6 +53,23 @@ public class Opponent
         opmap.put(3, miniDragon);
 
     }
+    public String Who(HashMap<Integer, Foe> hehe)
+    {
+        String then = "";
+        for (HashMap.Entry<Integer, Foe> map : hehe.entrySet()
+                )
+        {
+            Integer keys = map.getKey();
+            String value = map.getValue().getName();
+            String who = keys + "==" + value + "----";
+            then = then + who;
+
+
+            // 1==Mace---2==Dagger-----3==Sword-----4==Nunchakas
+        }
+        return then;
+
+    }
 
     public void ChooserMethod(){
         SetEnemies();
@@ -67,7 +84,7 @@ public class Opponent
         }
         if (util.getImput() == 2)
         {
-            util.ReadInput("Choose your ENEMY: 1==ORC---2==Princess-----3==DRAGON");
+            util.ReadInput("Choose your ENEMY: " + Who(opmap));
             OponentChooserV2();
             IfYouChoosed();
             break;
@@ -83,7 +100,7 @@ public class Opponent
         oponenthp = opmap.get(util.getImput()).getHp();
         oponame = opmap.get(util.getImput()).getName();}
     catch (Exception e){
-        System.out.println("You need to push only numbers from 1 to 3! But you pushed " + util.getImput()+ " And now all will start again!");
+        System.out.println("You need to push only numbers from 1 to " + opmap.size() +"! But you pushed " + util.getImput() + " And now all will start again!");
         ChooserMethod();
     }
     }

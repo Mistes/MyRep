@@ -15,6 +15,7 @@ public class Person
     private int personhp;
     private String personname;
 
+
     public int getPersonspeed()
     {
         return personspeed;
@@ -30,6 +31,7 @@ public class Person
         return personname;
     }
 
+
     public void SetCharacter()
     {
         Character toni = new Character(35, 225, "Toni");
@@ -40,19 +42,21 @@ public class Person
         oppers.put(3, hodor);
     }
 
-    public void Who(HashMap<Integer, Character> hehe)
+    public String Who(HashMap<Integer, Character> hehe)
     {
-
+      String then = "";
         for (HashMap.Entry<Integer, Character> map : hehe.entrySet()
                 )
         {
             Integer keys = map.getKey();
             String value = map.getValue().getName();
-            String who = (keys + "==" + value + "---");
-            System.out.print(who);
+            String who = keys + "==" + value + "----";
+            then = then + who;
+
 
             // 1==Mace---2==Dagger-----3==Sword-----4==Nunchakas
         }
+        return then;
 
     }
 
@@ -61,8 +65,8 @@ public class Person
         try
         {
             SetCharacter();
-            Who(oppers);
-            util.ReadInput("Choose your Character!");
+
+            util.ReadInput("Choose your Character!:" + Who(oppers));
 
             personspeed = oppers.get(util.getImput()).getSpeed();
             personhp = oppers.get(util.getImput()).getHp();
@@ -87,6 +91,8 @@ public class Person
         private int speed;
         private int hp;
         private String name;
+
+
 
         Character(int speed, int hp, String name)
         {

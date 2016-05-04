@@ -63,6 +63,23 @@ public class Weapon
         opwep.put(3, sword);
         opwep.put(4, nunchakas);
     }
+    public String Who(HashMap<Integer, AllWeps> hehe)
+    {
+        String then = "";
+        for (HashMap.Entry<Integer, AllWeps> map : hehe.entrySet()
+                )
+        {
+            Integer keys = map.getKey();
+            String value = map.getValue().getName();
+            String who = keys + "==" + value + "----";
+            then = then + who;
+
+
+            // 1==Mace---2==Dagger-----3==Sword-----4==Nunchakas
+        }
+        return then;
+
+    }
 
 
     public void WeaponChooserV2()
@@ -70,7 +87,7 @@ public class Weapon
         try
         {
             setWeapons();
-            util.ReadInput("Choose your Weapon!: 1==Mace---2==Dagger-----3==Sword-----4==Nunchakas");
+            util.ReadInput("Choose your Weapon!: " + Who(opwep));
             wepspeed = opwep.get(util.getImput()).getSpeed();
             wepdamage = opwep.get(util.getImput()).getDamage();
             wepaccuracy = opwep.get(util.getImput()).getAccuracy();
