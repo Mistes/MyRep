@@ -51,9 +51,9 @@ public class Opponent
 
     public void SetEnemies()
     {
-        Foe miniorc = new Foe(20, 215, "ORC!!!", 60);
-        Foe miniPrincess = new Foe(10, 150, "So cute princess!", 40);
-        Foe miniDragon = new Foe(5, 400, "Really impressive DRAGON!", 100);
+        Foe miniorc = new Foe(20, 215, "ORC!!!", 200);
+        Foe miniPrincess = new Foe(10, 150, "So cute princess!", 180);
+        Foe miniDragon = new Foe(5, 400, "Really impressive DRAGON!", 160);
         opmap.put(1, miniorc);
         opmap.put(2, miniPrincess);
         opmap.put(3, miniDragon);
@@ -97,14 +97,16 @@ public class Opponent
         }
         else {
             System.out.println("Why you pushing wrong buttons?");
-            ChooserMethod();}}
+            ChooserMethod();
+                break;}}
     }
 
     public void OponentChooserV2()
     {try{
         oponentarmor = opmap.get(util.getImput()).getArmor();
         oponenthp = opmap.get(util.getImput()).getHp();
-        oponame = opmap.get(util.getImput()).getName();}
+        oponame = opmap.get(util.getImput()).getName();
+        opodamage = opmap.get(util.getImput()).getDamage();}
     catch (Exception e){
         System.out.println("You need to push only numbers from 1 to " + opmap.size() +"! But you pushed " + util.getImput() + " And now all will start again!");
         ChooserMethod();

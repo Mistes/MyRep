@@ -5,13 +5,13 @@ package com.javarush.test.GameReplace.MyFirstGame;
  */
 public class criticalhit
 {
-    public static int Iscritical()
+    public static double Iscritical()
     {
-        int i = (int) (Math.random() * 10 + 1);
+        double i = (int) (Math.random() * 10 + 1);
         if (i > 8)
         {
             System.out.println("CRITICAL HIT!");
-            return 2;
+            return 1.5;
 
 
         } else return 1;

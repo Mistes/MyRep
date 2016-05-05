@@ -7,13 +7,22 @@ public class SpeedCalculator
 {
     public int speedCalcPVE(Armor arm, Weapon wep, Person pers)
     {
-        //How many strikes you will have, or your PVP enemy, Foe attaked all time!
+        //How many strikes you will have, or your PVP enemy, Foe attaked all time! need to make FOE chance for missTODO
         int speed = arm.getStatmovement() + wep.getWepspeed() + pers.getPersonspeed();
         int variabled = (speed / 20) + ((int) (Math.random() * 3) - 1);
         return variabled;
     }
+    public boolean misschancePVE(){
+        int i = (int) (Math.random() * 10);
+        if (i < 2)
+        {
+            return false;   // false if missed
 
-    public boolean speedCalcPVP(Armor arm, Weapon wep, Person pers)
+
+        } else return true;
+    }
+
+    public boolean speedCalcPVP(Armor arm, Weapon wep, Person pers)// for PVE too, who knows? :))) at PVE accuracy not working right!
     {
         // in this case wep is wep your enemy, its chance for hit, all rest for avoid, and players fight to the death , speedcalc ts about how many times you can avoid
         int avoidness = arm.getStatmovement() + pers.getPersonspeed() - wep.getWepaccuracy() + ((int) (Math.random() * 30) - 15);
