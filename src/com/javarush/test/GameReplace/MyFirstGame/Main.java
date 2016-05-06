@@ -48,27 +48,34 @@ public class Main
 
 
         int opohp = opo.getOpoHP();
-        int youhp = pvehp.YourHPPVE(armor1,player1);
-        for (int i = 0; i <= player1calc.speedCalcPVE(armor1, weapon1, player1); i++)
+        int youhp = pvehp.YourHP(armor1, player1);
+        int round = 0;
+        while (true)
         {
-            System.out.println("Now is " + (i + 1) + " round");
-            System.out.println(" Hp your enemy is now " + opohp);
-            System.out.println(" Your hp now " + youhp);
-            int dmg = 0;
+            round++;
+            System.out.println("Now is " + (round) + " round");
+            int dmg;
             int enemydmg = 0;
-             if (player1calc.misschancePVE()){//missedChance
-            dmg = ((((weapon1.getWepdamage()) + (int) (Math.random() * 25 - 15)) - opo.getOpoArmor()) * (int)criticalhit.Iscritical());}
-            if(player1calc.speedCalcPVP(armor1,weapon1,player1)){
+            for(int i = 0; i <weapon1.getWepspeed(); i++){
+                if (player1calc.misschancePVE(weapon1,player1)){//missedChance
+                    dmg = (int)((((weapon1.getWepdamage()) + (int) (Math.random() * 25 - 15)) - opo.getOpoArmor()) * criticalhit.Iscritical(weapon1));
+                    opohp = opohp - dmg;
+                    System.out.println("You hit your enemy at " + dmg + " HP");
+                    if(opohp < 0)   {System.out.println(opo.getOponame() +  " is died! YOU ARE BRUTAL MURDERER!!!");break;}
+                    System.out.println(" Hp your enemy is now " + opohp);
+                }
+            }
+            if(opohp < 0)   {break;}
+
+            if(player1calc.speedCalcPVE(armor1, player1)){
                 enemydmg = (opo.getOpodamage() + ((int) (Math.random() * 30 - 15))) - armor1.getStatdefence();
             }
             youhp = youhp - enemydmg;
-            opohp = opohp - dmg;
-                Nodamage(player1,opo,dmg,enemydmg);
-            if(dmg > 0)     {System.out.println("You hit your enemy at " + dmg + " HP");}
+
             if(enemydmg > 0){System.out.println(opo.getOponame() + " hit you at " + enemydmg + " HP");}
-            if(opohp < 0)   {System.out.println(opo.getOponame() +  " is died! YOU ARE BRUTAL MURDERER!!!");break;}
+            System.out.println(" Your hp now " + youhp);
+
             if(youhp < 0)   {System.out.println(player1.getPersonname() + " is died! You are bad player");break;}
-            if (i == player1calc.speedCalcPVE(armor1, weapon1, player1)) {System.out.println("Your enemy still alive.YOU ARE JERK ! "+opo.getOponame() + " have left  only " + opohp + " HP");}
             try
             {
                 Thread.sleep(3500);

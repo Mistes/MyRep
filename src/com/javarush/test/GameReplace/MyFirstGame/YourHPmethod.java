@@ -5,11 +5,7 @@ package com.javarush.test.GameReplace.MyFirstGame;
  */
 public class YourHPmethod
 {
-    public int YourHPPVE(Armor hpfromarm, Person personhp){
-        return hpfromarm.getStatyourhpbonus() + personhp.getPersonhp();
-    }
-    public int YourHPPVP(Armor hpfromarm, Person personhp,String msg){
-        System.out.println(msg);
+    public int YourHP(Armor hpfromarm, Person personhp){
         return hpfromarm.getStatyourhpbonus() + personhp.getPersonhp();
     }
 }

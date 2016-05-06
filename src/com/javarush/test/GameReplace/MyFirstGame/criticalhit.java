@@ -5,13 +5,13 @@ package com.javarush.test.GameReplace.MyFirstGame;
  */
 public class criticalhit
 {
-    public static double Iscritical()
+    public static double Iscritical(Weapon wep)
     {
         double i = (int) (Math.random() * 10 + 1);
-        if (i > 8)
+        if (i < wep.getWepcritchance()) //crit chance!
         {
             System.out.println("CRITICAL HIT!");
-            return 1.5;
+            return wep.getWepcritefectience();// need to return crit.effectivency
 
 
         } else return 1;

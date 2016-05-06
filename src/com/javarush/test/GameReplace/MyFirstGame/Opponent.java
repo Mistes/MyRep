@@ -51,8 +51,8 @@ public class Opponent
 
     public void SetEnemies()
     {
-        Foe miniorc = new Foe(20, 215, "ORC!!!", 200);
-        Foe miniPrincess = new Foe(10, 150, "So cute princess!", 180);
+        Foe miniorc = new Foe(20, 250, "ORC!!!", 120);
+        Foe miniPrincess = new Foe(10, 190, "So cute princess!", 100);
         Foe miniDragon = new Foe(5, 400, "Really impressive DRAGON!", 160);
         opmap.put(1, miniorc);
         opmap.put(2, miniPrincess);

@@ -14,7 +14,7 @@ public class Weapon
     private int wepdamage;
     private int wepaccuracy;
     private int wepcritchance;
-    private int wepcritefectience;
+    private double wepcritefectience;
     private String wepname;
 
     public int getWepspeed()
@@ -42,7 +42,7 @@ public class Weapon
         return wepcritchance;
     }
 
-    public int getWepcritefectience()
+    public double getWepcritefectience()
     {
         return wepcritefectience;
     }
@@ -52,12 +52,12 @@ public class Weapon
         System.out.println(String.format("You choose %s Its your weapon for now", opwep.get(util.getImput()).getName()));
     }
 
-    public void setWeapons()
+    public void setWeapons()//int speed, int damage, int accuracy, String name, int critchance, int critefectience
     {
-        AllWeps mace = new AllWeps(1, 80, 6, "Mace!", 3, 8);
-        AllWeps dagger = new AllWeps(40, 35, 8, "Dagger", 7, 2);
-        AllWeps sword = new AllWeps(25, 55, 7, "Sword!", 4, 7);
-        AllWeps nunchakas = new AllWeps(60, 15, 9, "Nunchakas", 9, 3);
+        AllWeps mace = new AllWeps      (1, 95, 22, "Mace!",     3, 1.8);
+        AllWeps dagger = new AllWeps    (3, 30, 10, "Dagger",    5, 1.3);
+        AllWeps sword = new AllWeps     (1, 70, 30, "Sword!",    4, 2.5);
+        AllWeps nunchakas = new AllWeps (2, 45, 15, "Nunchakas", 4, 1.7);
         opwep.put(1, mace);
         opwep.put(2, dagger);
         opwep.put(3, sword);
@@ -112,9 +112,9 @@ public class Weapon
         private int accuracy;
         private String name;
         private int critchance;
-        private int critefectience;
+        private double critefectience;
 
-        public AllWeps(int speed, int damage, int accuracy, String name, int critchance, int critefectience)
+        public AllWeps(int speed, int damage, int accuracy, String name, int critchance, double critefectience)
         {
             this.speed = speed;
             this.damage = damage;
@@ -149,7 +149,7 @@ public class Weapon
             return critchance;
         }
 
-        public int getCritefectience()
+        public double getCritefectience()
         {
             return critefectience;
         }
