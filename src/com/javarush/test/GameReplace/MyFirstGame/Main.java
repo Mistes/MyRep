@@ -1,7 +1,5 @@
 package com.javarush.test.GameReplace.MyFirstGame;
 
-import com.javarush.test.level20.lesson04.task05.Solution;
-
 /**
  * Created by Mistes on 18.04.2016.
  */
