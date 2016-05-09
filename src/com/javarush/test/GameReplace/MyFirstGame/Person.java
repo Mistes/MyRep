@@ -32,11 +32,11 @@ public class Person
     }
 
 
-    public void SetCharacter()
+    public void SetCharacter() //int speed, int hp, String name
     {
-        Character toni = new Character(35, 225, "Toni");
-        Character aria = new Character(60, 125, "Aria");
-        Character hodor = new Character(20, 310, "Hoodooor");
+        Character toni = new Character(35, 225, "Warrior");
+        Character aria = new Character(60, 125, "Rogue");
+        Character hodor = new Character(20, 310, "Tank");
         oppers.put(1, toni);
         oppers.put(2, aria);
         oppers.put(3, hodor);

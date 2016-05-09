@@ -1,15 +1,21 @@
 package com.javarush.test.GameReplace.MyFirstGame;
 
+import com.javarush.test.level20.lesson04.task05.Solution;
+
+import java.io.*;
+import java.nio.file.FileAlreadyExistsException;
+
+
 /**
  * Created by Mistes on 18.04.2016.
  */
 public class Main
 {
-    public static void main(String[] args)
+    public static void main(String[] args) throws IOException
     {
         Main main = new Main();
+        TeePrintStream.FileSaver();
         main.gamemethod();
-
 
     }
     public void gamemethod(){
@@ -60,6 +66,10 @@ public class Main
                 if (player1calc.misschancePVE(weapon1,player1)){//missedChance
                     dmg = (int)((((weapon1.getWepdamage()) + (int) (Math.random() * 25 - 15)) - opo.getOpoArmor()) * criticalhit.Iscritical(weapon1));
                     opohp = opohp - dmg;
+                    if (dmg < 0)
+                    {
+                        dmg = 0;
+                    }
                     System.out.println("You hit your enemy at " + dmg + " HP");
                     if(opohp < 0)   {System.out.println(opo.getOponame() +  " is died! YOU ARE BRUTAL MURDERER!!!");break;}
                     System.out.println(" Hp your enemy is now " + opohp);
@@ -69,10 +79,22 @@ public class Main
 
             if(player1calc.speedCalcPVE(armor1, player1)){
                 enemydmg = (opo.getOpodamage() + ((int) (Math.random() * 30 - 15))) - armor1.getStatdefence();
+                if (enemydmg < 0)
+                {
+                    enemydmg = 0;
+                }
             }
             youhp = youhp - enemydmg;
 
-            if(enemydmg > 0){System.out.println(opo.getOponame() + " hit you at " + enemydmg + " HP");}
+            if (enemydmg > 0)
+            {
+                System.out.println(opo.getOponame() + " hit you at " + enemydmg + " HP");
+                if (youhp < 0)
+                {
+                    System.out.println(player1.getPersonname() + " is died! You are bad player");
+                    break;
+                }
+            }
             System.out.println(" Your hp now " + youhp);
 
             if(youhp < 0)   {System.out.println(player1.getPersonname() + " is died! You are bad player");break;}
@@ -86,21 +108,95 @@ public class Main
 
         }
     }
-    public void PVP(){
-        System.out.println("-------------IN PROGRESS------------");
+
+    public void PVP()
+    {
         SpeedCalculator player1calc = new SpeedCalculator();
+        SpeedCalculator player2calc = new SpeedCalculator();
         Person player1 = new Person();
-        Opponent opo = new Opponent();
+        Person player2 = new Person();
         Weapon weapon1 = new Weapon();
-        Armor armor1 = new Armor();
         Weapon weapon2 = new Weapon();
+        Armor armor1 = new Armor();
+        Armor armor2 = new Armor();
         player1.PersonChooserV2();
-        opo.ChooserMethod();
+        System.out.println("Player1 choosed " + player1.getPersonname());
         weapon1.WeaponChooserV2();
         armor1.ArmorChooserV2();
-        //weapon2.WeaponChooserV2();
-        //System.out.println("Player1 choosed " +weapon.getWepname());
-        //System.out.println("Player2 choosed " + weapon2.getWepname());
+        System.out.println("Now its turn to choose for player2");
+        System.out.println(" ");
+        player2.PersonChooserV2();
+        System.out.println("Player2 choosed " + player2.getPersonname());
+        weapon2.WeaponChooserV2();
+        armor2.ArmorChooserV2();
+        YourHPmethod player1hp = new YourHPmethod();
+        YourHPmethod player2hp = new YourHPmethod();
+
+
+        int play1 = player1hp.YourHP(armor1, player1);
+        int play2 = player2hp.YourHP(armor2, player2);
+        int round = 0;
+        while (true)
+        {
+            round++;
+            System.out.println("Now is " + (round) + " round");
+            int dmg1;
+            int dmg2;
+            for (int i = 0; i < weapon1.getWepspeed(); i++)
+            {
+                if (player1calc.speedCalcPVP(armor2, weapon1, player2))
+                {//missedChance for player2
+                    dmg1 = (int) ((((weapon1.getWepdamage()) + (int) (Math.random() * 25 - 15)) - armor2.getStatdefence()) * criticalhit.Iscritical(weapon1));
+
+                    play2 = play2 - dmg1;
+                    System.out.println("You hitPlayer2 at " + dmg1 + " HP");
+                    if (play2 < 0)
+                    {
+                        System.out.println(player2.getPersonname() + " is died!          Player 1 WINS!!!!                  ");
+                        break;
+                    }
+                    System.out.println(String.format(" Hp Player2 %s is now %d", player2.getPersonname(), play2));
+                }
+            }
+            if (play2 < 0)
+            {
+                break;
+            }
+
+            for (int i = 0; i < weapon2.getWepspeed(); i++)
+            {
+                if (player2calc.speedCalcPVP(armor1, weapon2, player1))
+                {//missedChance for player1
+                    dmg2 = (int) ((((weapon2.getWepdamage()) + (int) (Math.random() * 25 - 15)) - armor1.getStatdefence()) * criticalhit.Iscritical(weapon2));
+                    if (dmg2 < 0)
+                    {
+                        dmg2 = 0;
+                    }
+                    play1 = play1 - dmg2;
+                    System.out.println("You hit Player1 at " + dmg2 + " HP");
+                    if (play1 < 0)
+                    {
+                        System.out.println(player1.getPersonname() + " is died!          Player 2 WINS!!!!                  ");
+                        break;
+                    }
+                    System.out.println(String.format(" Hp Player1 %s is now %d", player1.getPersonname(), play1));
+                }
+            }
+            if (play1 < 0)
+            {
+                break;
+            }
+
+
+            try
+            {
+                Thread.sleep(3500);
+            }
+            catch (InterruptedException e)
+            {
+                System.out.println(e);
+            }
+        }
     }
     public void Nodamage(Person pers, Opponent foe, int dmg, int enemydmg){
         if (dmg == 0){System.out.println(pers.getPersonname() + " missed this hit!");
@@ -110,8 +206,6 @@ public class Main
 
     }
     public void Endingsmg(Person pers, Opponent foe, int opohp, int yourhp){
-
-
     }
 
 
