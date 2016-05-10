@@ -14,15 +14,15 @@ public class TeePrintStream extends PrintStream
 
     public static void FileSaver() throws IOException
     {
-        File f = new File("x://robots.txt");
+        File f = new File("d://results/robots.txt");
         BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
         int b = Integer.parseInt(br.readLine());
         br.close();
-        FileWriter writer = new FileWriter("x://robots.txt");
+        FileWriter writer = new FileWriter("d://results/robots.txt");
         String d = Integer.toString(b + 1);
         writer.write(d);
         writer.close();
-        String one = "x://gameScore";
+        String one = "d://results/gameScore";
         String two = ".txt";
         String fileName = one + d + two;
         FileOutputStream filed = new FileOutputStream(fileName);
