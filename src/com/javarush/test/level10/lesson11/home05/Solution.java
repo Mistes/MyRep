@@ -3,6 +3,7 @@ package com.javarush.test.level10.lesson11.home05;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /* Количество букв
 Ввести с клавиатуры 10 строчек и подсчитать в них количество различных букв (для 33 букв алфавита).  Вывести результат на экран.
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 …
 я 9
 */
-/*
+
 public class Solution
 {
     public static void main(String[] args)  throws Exception
@@ -41,13 +42,10 @@ public class Solution
         }
 
 
-        for (int i = 0; i <list.size(); i++){
-            for (int j = i + 1; j < alphabet.size(); j++){
-            if(list.get(i).equals(alphabet.get(j))){
-                System.out.println();
-            }
+        HashMap<Character, Integer> map = new HashMap<>();
+        for(int i = 0; i<list.size();i++){
+
         }
     }
 
 }
-*/
