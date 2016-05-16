@@ -147,6 +147,10 @@ public class Main
                 if (player1calc.speedCalcPVP(armor2, weapon1, player2))
                 {//missedChance for player2
                     dmg1 = (int) ((((weapon1.getWepdamage()) + (int) (Math.random() * 25 - 15)) - armor2.getStatdefence()) * criticalhit.Iscritical(weapon1));
+                    if (dmg1 < 0)
+                    {
+                        dmg1 = 0;
+                    }
 
                     play2 = play2 - dmg1;
                     System.out.println("You hitPlayer2 at " + dmg1 + " HP");
