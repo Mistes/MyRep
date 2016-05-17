@@ -25,19 +25,48 @@ public class Solution
     {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         Person person = null;
-        String key = null;
+        String key = reader.readLine();
 
         //тут цикл по чтению ключей, пункт 1
+        while(key.equals("user") || key.equals("looser")||key.equals("coder")||key.equals("proger"))
         {
-        //создаем объект, пункт 2
+            if (key.equals("user")){
+                Person.User user = new Person.User();
+                person = user;
+            }
+            if(key.equals("looser")){
+                Person.Looser looser = new Person.Looser();
+                person = looser;
+            }
+            if(key.equals("coder")){
+                Person.Coder coder = new Person.Coder();
+                person = coder;
+            }
+            if(key.equals("proger")){
+                Person.Proger proger = new Person.Proger();
+                person = proger;
+            }
 
-        doWork(person); //вызываем doWork
+        doWork(person);
+            key = reader.readLine();//вызываем doWork
 
         }
     }
 
     public static void doWork(Person person)
     {
-        // пункт 3
+       if(person instanceof Person.User){
+           ((Person.User) person).live();
+       }
+        if(person instanceof Person.Coder){
+            ((Person.Coder) person).coding();
+        }
+        if(person instanceof Person.Proger){
+            ((Person.Proger) person).enjoy();
+        }
+        if(person instanceof Person.Looser){
+            ((Person.Looser) person).doNothing();
+        }
+
     }
 }

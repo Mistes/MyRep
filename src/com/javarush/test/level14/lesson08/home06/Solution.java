@@ -17,10 +17,23 @@ package com.javarush.test.level14.lesson08.home06;
 8.2. Вывести на экран movie.getClass().getSimpleName().
 */
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 public class Solution
 {
     public static void main(String[] args) throws Exception
     {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String key = reader.readLine();
+        while(key.equals("cartoon") || key.equals("thriller")||key.equals("soapOpera")){
+
+            Movie movie = MovieFactory.getMovie(key);
+            System.out.println(movie.getClass().getSimpleName());
+
+
+            key = reader.readLine();
+        }
         //ввести с консоли несколько ключей (строк), пункт 7
 
         /*
@@ -45,6 +58,14 @@ public class Solution
             }
 
             //напишите тут ваш код, пункты 5,6
+            if ("thriller".equals(key))
+            {
+                movie = new Thriller();
+            }
+            if ("cartoon".equals(key))
+            {
+                movie = new Cartoon();
+            }
 
             return movie;
         }
@@ -59,4 +80,6 @@ public class Solution
     }
 
     //Напишите тут ваши классы, пункт 3
+    static class Cartoon extends Movie{}
+    static class Thriller extends Movie{}
 }

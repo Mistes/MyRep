@@ -30,7 +30,7 @@ public class Solution
         ArrayList<Integer> newlist = new ArrayList<>();
 
 
-        Integer[] array = new Integer[list.size()];
+        Integer[] array;
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         File f = new File(reader.readLine());
         reader.close();
@@ -44,7 +44,7 @@ public class Solution
             line = freader.readLine();
         }
         freader.close();
-        for (int i : list)
+       for (int i : list)
         {
             if (i % 2 == 0)
             {
@@ -53,16 +53,14 @@ public class Solution
                 newlist.add(i);
             }
         }
-        for (int b = 1; b < newlist.size(); b++)
-        {
-            array[b] = newlist.get(b);}
 
-            Arrays.sort(array, new Comparator<Integer>()
+             array = newlist.toArray(new Integer[newlist.size()]);
+            Arrays.sort(array, new Comparator<Integer>()  //TODO COMPARATOR AND ARRAYLIST TO ARRAY
             {
 
                 public int compare(Integer o1, Integer o2)
                 {
-                    return o2 - o1;
+                    return o1 - o2;
                 }
             });
             for (int i : array)
