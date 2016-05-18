@@ -32,7 +32,7 @@ public class Solution
             System.out.println(movie.getClass().getSimpleName());
 
 
-            key = reader.readLine();
+            key = reader.readLine();                           //TODO люди читать про динамическую диспетчеризацию методов и приведение переменных ссылочного типа
         }
         //ввести с консоли несколько ключей (строк), пункт 7
 
