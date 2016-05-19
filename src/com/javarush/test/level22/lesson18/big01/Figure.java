@@ -30,4 +30,14 @@ public class Figure
     private int x;
     private int y;
     private int[][]matrix;
+
+    public boolean isCurrentPositionAvailable(){return true;}
+    public void left(){}
+    public void right(){}
+    public void down(){}
+    public void up(){}
+    public void downMaximum(){}
+    public void rotate(){}
+    public void landed(){}
+
 }
