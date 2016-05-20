@@ -25,8 +25,7 @@ public class Solution {
     public void play() {
         System.out.println(name + ": " + sound + " " + sound);
     }
-
-    public void sleep(long milliseconds) {
+    public  void sleep(long milliseconds) {
         System.out.println(name + ": Zzzzzzz..." + (milliseconds / 1000) + " sec");
     }
 
@@ -43,7 +42,8 @@ public class Solution {
             private void someActions() throws InterruptedException {
                 eat();
                 play();
-                sleep(1000);
+              Solution.this.sleep(1000);
+
             }
         };
         thread.start();
@@ -52,5 +52,6 @@ public class Solution {
 
     public static void main(String[] args) throws InterruptedException {
         new Solution("Amigo", "beef", "knock").live();
+
     }
 }
