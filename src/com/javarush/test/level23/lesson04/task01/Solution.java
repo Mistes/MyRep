@@ -8,11 +8,14 @@ package com.javarush.test.level23.lesson04.task01;
 public class Solution {
     public InnerClass[] innerClasses = new InnerClass[2];
 
+
     public class InnerClass {
     }
 
     public static Solution[] getTwoSolutions() {
         Solution solution = new Solution();
+
+
         return null;
     }
 }
