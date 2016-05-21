@@ -4,6 +4,7 @@ import java.io.*;
 
 public class TeePrintStream extends PrintStream
 {
+    public static String fileName;
     private final PrintStream second;
 
     public TeePrintStream(OutputStream main, PrintStream second)
@@ -11,6 +12,7 @@ public class TeePrintStream extends PrintStream
         super(main);
         this.second = second;
     }
+
 
     public static void FileSaver() throws IOException
     {
@@ -22,12 +24,13 @@ public class TeePrintStream extends PrintStream
         String d = Integer.toString(b + 1);
         writer.write(d);
         writer.close();
-        String one = "d://results/gameScore";
+       String one = "d://results/gameScore";
         String two = ".txt";
-        String fileName = one + d + two;
+        fileName = one + d + two;
         FileOutputStream filed = new FileOutputStream(fileName);
         TeePrintStream tee = new TeePrintStream(filed, System.out);
         System.setOut(tee);
+
 
     }
 

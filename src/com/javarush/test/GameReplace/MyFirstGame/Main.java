@@ -1,9 +1,7 @@
 package com.javarush.test.GameReplace.MyFirstGame;
 
-import com.javarush.test.level20.lesson04.task05.Solution;
-
-import java.io.*;
-import java.nio.file.FileAlreadyExistsException;
+import javax.mail.MessagingException;
+import java.io.IOException;
 
 
 /**
@@ -11,11 +9,12 @@ import java.nio.file.FileAlreadyExistsException;
  */
 public class Main
 {
-    public static void main(String[] args) throws IOException
+    public static void main(String[] args) throws IOException,MessagingException
     {
         Main main = new Main();
         TeePrintStream.FileSaver();
         main.gamemethod();
+        Mail.SuperSending();
 
     }
     public void gamemethod(){
