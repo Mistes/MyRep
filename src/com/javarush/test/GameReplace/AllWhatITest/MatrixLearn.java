@@ -7,7 +7,7 @@ public class MatrixLearn
 {
     public static void main(String[] args)
     {
-        int[][] multiplyTab  = new int[6][6];
+        int[][] multiplyTab  = new int[5][6];
 
         // цикл по первой размерности
         for (int i = 0; i < 6; i++) {

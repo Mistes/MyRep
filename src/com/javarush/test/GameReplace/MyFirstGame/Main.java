@@ -14,7 +14,7 @@ public class Main
         Main main = new Main();
         TeePrintStream.FileSaver();
         main.gamemethod();
-        Mail.SuperSending();
+      //  Mail.SuperSending();
 
     }
     public void gamemethod(){
@@ -151,7 +151,7 @@ public class Main
                         dmg1 = 0;
                     }
 
-                    play2 = play2 - dmg1;
+                   else play2 = play2 - dmg1;
                     System.out.println("You hitPlayer2 at " + dmg1 + " HP");
                     if (play2 < 0)
                     {
@@ -175,7 +175,7 @@ public class Main
                     {
                         dmg2 = 0;
                     }
-                    play1 = play1 - dmg2;
+                   else play1 = play1 - dmg2;
                     System.out.println("You hit Player1 at " + dmg2 + " HP");
                     if (play1 < 0)
                     {
