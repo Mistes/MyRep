@@ -33,5 +33,8 @@ public class Snake {
     public int getY(){
         return sections.get(0).getY();
     }
-    public void move(){}
+    public void move(){
+        getDirection();
+
+    }
 }
