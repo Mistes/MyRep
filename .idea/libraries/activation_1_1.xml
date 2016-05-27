@@ -4,6 +4,9 @@
       <root url="jar://$APPLICATION_HOME_DIR$/jre/lib/activation-1.1.jar!/" />
       <root url="jar://$APPLICATION_HOME_DIR$/jre/lib/mail.jar!/" />
       <root url="jar://$APPLICATION_HOME_DIR$/jre/lib/smtp-1.4.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../jaf-1_1_1/jaf-1.1.1/activation.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../jaf-1_1_1/jaf-1.1.1/mail.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../jaf-1_1_1/jaf-1.1.1/smtp-1.4.4.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
