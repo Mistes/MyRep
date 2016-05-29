@@ -24,6 +24,10 @@ public class Solution {
     }
 
     public static void ourInterruptMethod() {
+        //add your code here - добавь код тут
+            for(Thread eachThread: threads){
+                eachThread.interrupt();
+            }
 
     }
 
@@ -41,14 +45,17 @@ public class Solution {
     public static class Water implements Runnable {
         private String commonResource;
 
+
         public Water(String commonResource) {
             this.commonResource = commonResource;
         }
-
+        boolean isCurrentThreadInterrupted;
         public void run() {
             //fix 2 variables - исправь 2 переменных
-            boolean isCurrentThreadInterrupted = true;
-            String threadName = "";
+            if(Thread.interrupted()){isCurrentThreadInterrupted = true;}
+            else {isCurrentThreadInterrupted = false;}
+
+            String threadName = Thread.currentThread().getName();
 
             try {
                 while (!isCurrentThreadInterrupted) {

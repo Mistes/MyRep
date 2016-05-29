@@ -23,9 +23,17 @@ public class Solution {
 
     public static int calculateHorsesFinished(List<Horse> horses) throws InterruptedException {
         int countFinished = 0;
+        for(Horse eachHorse: horses){
+            if(eachHorse.isFinished()){countFinished++;}
+            else {
+
+                System.out.println("Waiting for " + eachHorse.getName());
+                eachHorse.join();
+
+            }
+        }
+
         //add your implementation here - добавь свою реалзацию тут
-
-
         return countFinished;
     }
 

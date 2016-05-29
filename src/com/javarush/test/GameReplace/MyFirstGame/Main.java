@@ -14,7 +14,7 @@ public class Main
         Main main = new Main();
         TeePrintStream.FileSaver();
         main.gamemethod();
-      //  Mail.SuperSending();
+        Mail.SuperSending();
 
     }
     public void gamemethod(){

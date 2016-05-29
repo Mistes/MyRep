@@ -15,9 +15,9 @@ public class Mail {
     }
     public static void SuperSending()throws MessagingException, UnsupportedEncodingException{
         String subject = "Your favourite GameBot";
-        String content = "Vados, its your game result!";
+        String content = "My love, its your game result!";
         String smtpHost="smtp.gmail.com";
-        String address="shidla_v@mail.ru";
+        String address="kurilenko-dm@mail.ru";
         String login="Morningkiss211@gmail.com";
         String password="W46944tt";
         String smtpPort="465";

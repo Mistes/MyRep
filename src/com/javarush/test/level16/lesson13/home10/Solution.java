@@ -1,10 +1,5 @@
 package com.javarush.test.level16.lesson13.home10;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-
 /* Последовательный вывод файлов
 1. Разберись, что делает программа.
 2. В статическом блоке считай 2 имени файла firstFileName и secondFileName.
@@ -19,8 +14,9 @@ import java.io.IOException;
 [все тело первого файла]
 [все тело второго файла]
 */
-/*
+
 public class Solution {
+    /*
     public static String firstFileName;
     public static String secondFileName;
 
@@ -46,5 +42,5 @@ public class Solution {
 
         void start();
     }
+    */
 }
-*/
