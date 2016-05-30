@@ -3,10 +3,8 @@ package com.javarush.test.level16.lesson13.bonus02;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.InterruptedIOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.SynchronousQueue;
 
 /* Клубок
 1. Создай 5 различных своих нитей c отличным от Thread типом:
@@ -20,55 +18,87 @@ import java.util.concurrent.SynchronousQueue;
 Подсказка: Нить 4 можно проверить методом isAlive()
 */
 
-public class Solution {
+public class Solution
+{
     public static List<Thread> threads = new ArrayList<Thread>(5);
-    static {threads.add(new One());
-            threads.add(new Inter());
-            threads.add(new Ura());
-            threads.add(new Messageone());
-            threads.add(new Rid());}
+
+    static
+    {
+        threads.add(new One());
+        threads.add(new Inter());
+        threads.add(new Ura());
+        threads.add(new Messageone());
+        threads.add(new Rid());
+    }
 
 
-   public static class One extends Thread{
+    public static class One extends Thread
+    {
 
-       public void run()
-       {
-        while(true){}
-       }
-   }
-    public static class Inter extends Thread{
+        public void run()
+        {
+            while (true)
+            {
+            }
+        }
+    }
+
+    public static class Inter extends Thread
+    {
         @Override
         public void run()
         {
-            try{
-                while (!isInterrupted()){
+            try
+            {
+                while (!isInterrupted())
+                {
                     throw new InterruptedException();
                 }
-            }catch (InterruptedException e){
+            }
+            catch (InterruptedException e)
+            {
                 System.out.println(e);
             }
         }
     }
-    public static class Ura extends Thread{
+
+    public static class Ura extends Thread
+    {
         @Override
         public void run()
         {
-            while(true){
-                try{
+            while (true)
+            {
+                try
+                {
                     Thread.sleep(500);
                     System.out.println("Ура");
-                } catch (InterruptedException e){}
+                }
+                catch (InterruptedException e)
+                {
+                }
             }
         }
     }
 
-    public static class Messageone extends Thread implements Message{
+    public static class Messageone extends Thread implements Message
+    {
+
         @Override
         public void showWarning()
-        {try{
-            interrupt();
-            join();}
-        catch (InterruptedException e){}
+        {
+
+            if (currentThread().isAlive())
+            {
+                try
+                {
+                    this.interrupt();
+                    this.join();
+                }
+                catch (InterruptedException e)
+                {
+                }
+            }
         }
 
         @Override
@@ -77,25 +107,44 @@ public class Solution {
             while (!isInterrupted()){}
         }
     }
-    public static class Rid extends Thread {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        @Override
-        public void run()
+
+        public static class Rid extends Thread
         {
-            try{
-                String s;
-                int sum = 0;
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-            while (!(s = reader.readLine()).equals("N")){
-                sum+=Integer.parseInt(reader.readLine());
+            @Override
+            public void run()
+            {
+                try
+                {
+                    String s = "";
+                    int sum = 0;
+                    int delta = 0;
+
+                    while (true)
+                    {
+                        s = reader.readLine();
+                        if (s.equals("N"))
+                        {
+                            break;
+                        } else
+                        {
+                            delta = Integer.parseInt(s);
+                            sum += delta;
+                        }
+                    }
+                    reader.close();
+                    System.out.println(sum);
+                }
+                catch (IOException e)
+                {
+                }
+
+
             }
-                reader.close();
-                System.out.println(sum);
-            }catch (IOException e){}
-
-
         }
     }
-}
+
+
 

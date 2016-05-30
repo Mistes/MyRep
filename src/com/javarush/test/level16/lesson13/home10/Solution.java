@@ -15,32 +15,73 @@ package com.javarush.test.level16.lesson13.home10;
 [все тело второго файла]
 */
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.InputStreamReader;
+
 public class Solution {
-    /*
     public static String firstFileName;
     public static String secondFileName;
-
+    static {
+        try
+        {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            firstFileName = reader.readLine();
+            secondFileName = reader.readLine();
+            reader.close();
+        }
+        catch (Exception e)
+        {
+        }
+    }
+    public static class ReadFileThread extends Thread implements ReadFileInterface
+    {
+        String fileName;
+        String fileContent;
+        public ReadFileThread(){}
+        public void setFileName(String fileName)
+        {
+            this.fileName=fileName;
+        }
+        public String getFileContent()
+        {
+            return fileContent;
+        }
+        public void run()
+        {
+            String s="";
+            String line = "";
+            try
+            {
+                BufferedReader reader2 = new BufferedReader(new FileReader(fileName));
+                while((s=reader2.readLine())!=null)//// TODO: its new cycle for reading at line
+                {
+                    s=s+" ";
+                    line = line + s;
+                }
+                reader2.close();
+            }
+            catch (Exception e)
+            {
+            }
+            fileContent=line;
+        }
+    }
     public static void main(String[] args) throws InterruptedException {
         systemOutPrintln(firstFileName);
         systemOutPrintln(secondFileName);
     }
-
     public static void systemOutPrintln(String fileName) throws InterruptedException {
         ReadFileInterface f = new ReadFileThread();
         f.setFileName(fileName);
         f.start();
+        f.join();
         System.out.println(f.getFileContent());
     }
-
     public static interface ReadFileInterface {
-
         void setFileName(String fullFileName);
-
         String getFileContent();
-
         void join() throws InterruptedException;
-
         void start();
     }
-    */
 }
