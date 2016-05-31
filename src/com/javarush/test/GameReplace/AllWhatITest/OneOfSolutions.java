@@ -13,27 +13,19 @@ public class OneOfSolutions
 
     public static void main(String[] args)
     {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        try
-        {
-            String s = "";
-            int sum = 0;
-            int delta = 0;
 
-            while (true)
-            {
-                s= reader.readLine();
-                if(s.equals("N")){
-                    break;}
-                delta = Integer.parseInt(s);
-                sum += delta;
-            }
-            reader.close();
-            System.out.println(sum);
-        }
-        catch (IOException e)
+        int leftIndex = Direction.LEFT.ordinal();
+
+        Direction[] array = Direction.values();
+        Direction left = array[leftIndex];
+        System.out.println(array.toString());
+        for (Direction direction : Direction.values())
         {
+            System.out.println(direction);
         }
+    }
+    public enum Direction{
+        UP, DOWN, RIGHT, LEFT
     }
 }
