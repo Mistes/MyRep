@@ -11,20 +11,17 @@ package com.javarush.test.level25.lesson05.task01;
 public class Solution {
     public static void processThreads(Thread... threads) {
         //implement this method - реализуйте этот метод
-
-    }
-
-    public static void main(String[] args)
-    {
-        Printer printer = new Printer();
-        Thread childThread = new Thread(printer);
-        processThreads();
-    }
-   static class Printer implements Runnable
-    {
-        public void run()
-        {
-            System.out.println("I’m printer");
-        }
+       for(Thread thread:threads){
+           switch (thread.getState())
+           {
+               case NEW:thread.start();break;
+               case WAITING:thread.interrupt();break;
+               case TIMED_WAITING:thread.interrupt();break;
+               case BLOCKED:thread.interrupt();break;
+               case RUNNABLE:thread.isInterrupted();break;
+               case TERMINATED:
+                   System.out.println(thread.getPriority());break;
+           }
+       }
     }
 }
