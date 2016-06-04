@@ -18,8 +18,8 @@ public class Mail {
         String content = "My love, its your game result!";
         String smtpHost="smtp.gmail.com";
         String address="kurilenko-dm@mail.ru";
-        String login="Morningkiss211@gmail.com";
-        String password="W46944tt";
+        String login="";
+        String password="";
         String smtpPort="465";
 
         String attachment = TeePrintStream.fileName;
