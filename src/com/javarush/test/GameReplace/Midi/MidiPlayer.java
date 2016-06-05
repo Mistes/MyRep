@@ -1,4 +1,4 @@
-package com.javarush.test.GameReplace;
+package com.javarush.test.GameReplace.Midi;
 
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
