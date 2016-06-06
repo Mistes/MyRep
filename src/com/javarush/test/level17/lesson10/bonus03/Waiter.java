@@ -1,7 +1,7 @@
 package com.javarush.test.level17.lesson10.bonus03;
 
 public class Waiter implements Runnable {
-    public  boolean continueWorking = true;
+    public boolean continueWorking = true;
 
     @Override
     public void run() {

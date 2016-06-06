@@ -1,10 +1,23 @@
 package com.javarush.test.level24.lesson14.big01;
 
 /**
- * Created by Администратор on 03.06.2016.
+ * Базовый класс для всех объектов игры.
  */
-public class BaseObject
+public abstract class BaseObject
 {
+    //координаты
+    protected double x;
+    protected double y;
+    //радиус объекта
+    protected double radius;
+
+    protected BaseObject(double x, double y, double radius)
+    {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+    }
+
     public double getX()
     {
         return x;
@@ -35,14 +48,36 @@ public class BaseObject
         this.radius = radius;
     }
 
-    private double x;
-    private double y;
-    private double radius;
+    /**
+     * Метод рисует свой объект на "канвасе".
+     */
+    public abstract void draw(Canvas canvas);
 
-    public BaseObject(double x, double y, double radius)
+    /**
+     * Двигаем себя на один ход.
+     */
+    public abstract void move();
+
+    /**
+     * Проверяем - не выходит ли (x,y) за границы.
+     */
+    public void checkBorders(double minx, double maxx, double miny, double maxy)
     {
-        this.x = x;
-        this.y = y;
-        this.radius = radius;
+        if (x < minx) x = minx;
+        if (x > maxx) x = maxx;
+        if (y < miny) y = miny;
+        if (y > maxy) y = maxy;
+    }
+
+    /**
+     * Проверяем - пересекаются ли переданный(o) и наш(this) объекты.
+     */
+    public boolean isIntersec(BaseObject o)
+    {
+        double dx = x - o.x;
+        double dy = y - o.y;
+        double destination = Math.sqrt(dx * dx + dy * dy);
+        double destination2 = Math.max(radius, o.radius);
+        return destination <= destination2;
     }
 }

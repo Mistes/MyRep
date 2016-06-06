@@ -9,4 +9,16 @@ public class Stand extends BaseObject
     {
         super(x, y, radius);
     }
+
+    @Override
+    public void draw(Canvas canvas)
+    {
+
+    }
+
+    @Override
+    public void move()
+    {
+
+    }
 }
