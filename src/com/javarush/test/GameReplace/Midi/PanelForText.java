@@ -1,7 +1,5 @@
 package com.javarush.test.GameReplace.Midi;
 
-import javafx.scene.layout.Pane;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,6 +10,7 @@ import java.awt.event.ActionListener;
  */
 public class PanelForText implements ActionListener
 {
+    int n = 0;
     JTextArea area;
     public static void main(String[] args)
     {
@@ -51,6 +50,10 @@ public class PanelForText implements ActionListener
 
     }
     public void actionPerformed(ActionEvent e) {
-        area.append("Button clicked \n");
+
+        n++;
+
+        area.append("Button clicked "+ n +" times"+ "\n");
+
     }
 }
