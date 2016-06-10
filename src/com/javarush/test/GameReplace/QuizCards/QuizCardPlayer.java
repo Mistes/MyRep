@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class QuizCardPlayer
     private int currentCardIndex;
     private JFrame frame;
     private JButton nextButton;
+    private JButton repeatButton;
     private boolean isShowAnswer;
 
     public static void main(String[] args)
@@ -44,10 +46,15 @@ public class QuizCardPlayer
         JScrollPane qScroller = new JScrollPane(display);
         qScroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         qScroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
         nextButton = new JButton("Show question");
+        repeatButton = new JButton("Start over");
         mainPanel.add(qScroller);
         mainPanel.add(nextButton);
+        mainPanel.add(repeatButton);
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
         nextButton.addActionListener(new NextCardListener());
+        repeatButton.addActionListener(new RepeatCardListener());
 
         JMenuBar menuBar = new JMenuBar();
         JMenu filemenu = new JMenu("File");
@@ -57,6 +64,7 @@ public class QuizCardPlayer
         menuBar.add(filemenu);
         frame.setJMenuBar(menuBar);
         frame.getContentPane().add(BorderLayout.CENTER, mainPanel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(640, 500);
         frame.setVisible(true);
     }
@@ -84,8 +92,20 @@ public class QuizCardPlayer
             }
         }
     }
+    private class RepeatCardListener implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            currentCardIndex = 0;
+            nextButton.setEnabled(true);
+            System.out.println("Starting again!");
+            display.setText("Starting again!");
 
-    private class NextCardListener implements ActionListener
+        }
+    }
+
+    private class OpenMenuListener implements ActionListener
     {
         @Override
         public void actionPerformed(ActionEvent e)
@@ -95,7 +115,9 @@ public class QuizCardPlayer
             loadFile(fileOpen.getSelectedFile());
         }
     }
-    private void loadFile(){
+    private void loadFile(File file){
+        currentCardIndex = 0;
+        nextButton.setEnabled(true);
         cardList = new ArrayList<QuizCard>();
         try{
             BufferedReader reader = new BufferedReader(new FileReader(file));

@@ -44,7 +44,7 @@ public class QuizCardBuilder
         answer.setWrapStyleWord(true);
         answer.setFont(bigFont);
 
-        JScrollPane aScroller = new JScrollPane(question);
+        JScrollPane aScroller = new JScrollPane(answer);
         aScroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         aScroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -52,12 +52,12 @@ public class QuizCardBuilder
 
         cardsList = new ArrayList<>();
 
-        JLabel qLabel = new JLabel("Question");
-        JLabel aLabel = new JLabel("Answer");
+        JLabel qLabel = new JLabel("Question:");
+        JLabel aLabel = new JLabel("Answer:");
 
         mainpanel.add(qLabel);
-        mainpanel.add(aLabel);
         mainpanel.add(qScroller);
+        mainpanel.add(aLabel);
         mainpanel.add(aScroller);
         mainpanel.add(nextButton);
         nextButton.addActionListener(new NextCardListener());
@@ -73,6 +73,7 @@ public class QuizCardBuilder
         menuBar.add(filemenu);
         frame.setJMenuBar(menuBar);
         frame.getContentPane().add(BorderLayout.CENTER,mainpanel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500,600);
         frame.setVisible(true);
     }
@@ -120,7 +121,7 @@ public class QuizCardBuilder
 
             for(QuizCard card : cardsList){
                 writer.write(card.getQuestion() + "/");
-                writer.write((card.getAnswer() + "/n"));
+                writer.write((card.getAnswer())+ '\r'+ '\n');
             }
             writer.close();
         }catch (Exception e){
