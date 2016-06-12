@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.HashMap;
 
 
@@ -38,14 +37,7 @@ public class Solution {
         }
         Integer[] array;
         array = list.values().toArray(new Integer[list.size()]);
-        Arrays.sort(array, new Comparator<Integer>()  //TODO COMPARATOR AND ARRAYLIST TO ARRAY
-        {
-
-            public int compare(Integer o1, Integer o2)
-            {
-                return o1 - o2;
-            }
-        });
+        Arrays.sort(array, (o1, o2) -> o1 - o2);
         for (int i : array)
         {
             System.out.println(i);

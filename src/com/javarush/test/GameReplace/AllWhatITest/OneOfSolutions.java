@@ -1,9 +1,5 @@
 package com.javarush.test.GameReplace.AllWhatITest;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 /**
  * Created by Mistes on 30.05.2016.
  */

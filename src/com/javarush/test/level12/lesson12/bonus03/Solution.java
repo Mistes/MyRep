@@ -4,6 +4,9 @@ package com.javarush.test.level12.lesson12.bonus03;
 Написать метод, который возвращает минимальное число в массиве и его позицию (индекс).
 */
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Solution
 {
     public static void main(String[] args) throws Exception
@@ -18,14 +21,23 @@ public class Solution
 
     public static Pair<Integer, Integer> getMinimumAndIndex(int[] array)
     {
+        int min = 0;
         if (array == null || array.length == 0)
         {
             return new Pair<Integer, Integer>(null, null);
         }
 
-        //Напишите тут ваше решение
+        Map <Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < array.length; i++){
+            map.put(array[i],i);
+            if(min > array[i]){
+                min = array[i];
+            }
+        }
 
-        return new Pair<Integer, Integer>(0, 0);
+
+
+        return new Pair<Integer, Integer>(min, map.get(min));
     }
 
 

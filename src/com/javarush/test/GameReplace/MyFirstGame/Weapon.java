@@ -1,9 +1,5 @@
 package com.javarush.test.GameReplace.MyFirstGame;
 
-import com.javarush.test.MyFirstGame.WeaponChooser;
-import com.javarush.test.level06.lesson08.task03.Util;
-import com.javarush.test.level20.lesson04.task05.Solution;
-
 import java.util.HashMap;
 
 public class Weapon

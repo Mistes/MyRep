@@ -29,7 +29,7 @@ public class Solution {
             list.add(data);
         }
         array = map.values().toArray(new Integer[map.size()]);
-        Arrays.sort(array, new Comparator<Integer>()  //TODO COMPARATOR AND ARRAYLIST TO ARRAY
+        Arrays.sort(array, new Comparator<Integer>()
         {
 
             public int compare(Integer o1, Integer o2)
