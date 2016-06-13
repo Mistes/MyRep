@@ -35,7 +35,7 @@ public class Bankomat {
             while (!isStopped) {
                 account.deposit("1000");            //кладем на счет
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     break;
                 }
