@@ -10,43 +10,29 @@ package com.javarush.test.level18.lesson05.task03;
 
 import java.io.*;
 
-public class Solution {
-    public static void main(String[] args) throws IOException{
+public class Solution
+{
+    public static void main(String[] args) throws Exception
+    {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String s = reader.readLine();
-        String d =reader.readLine();
-        String j =reader.readLine();
-        reader.close();
-        FileInputStream inputStream = new FileInputStream(s);
-        FileOutputStream outputStream = new FileOutputStream(d);
-        FileOutputStream outputStream2 = new FileOutputStream(j);
-        int counter = 0;
-        byte[] cache  = new byte[(inputStream.available()/2)+1];
-        byte[] cache2 = new byte[inputStream.available() - inputStream.available()/2];
-        while (inputStream.available() > 0){
-            int data = inputStream.read();
-                counter++;
-            if (counter % 2 == 0){
-                outputStream.write(cache, 0 ,inputStream.read(cache));
-                outputStream2.write(cache2, 0 ,inputStream.read(cache2));
-                outputStream.flush();
-                outputStream2.flush();
+        try {
+            FileInputStream file1 = new FileInputStream(reader.readLine());
+            FileOutputStream file2 = new FileOutputStream(reader.readLine());
+            FileOutputStream file3 = new FileOutputStream(reader.readLine());
+            reader.close();
+            if (file1.available() > 0) {
+                int filesize = file1.available() / 2;    // записуємо в файлсайз половину байт
+                if (file1.available() % 2 != 0) filesize++; // якщо не ділиться порівну на два, прибавляємо 1 байт.
+                byte[] buffer = new byte[filesize];             // буфер розміром з 1 половину
+                file1.read(buffer);
+                file2.write(buffer);
+                buffer = new byte[file1.available()];           //друга половина, все що залишилось
+                file1.read(buffer);
+                file3.write(buffer);
             }
-            if(counter % 2 > 0)
-            {
-                outputStream.write(cache2, 0 ,inputStream.read(cache2));
-                outputStream2.write(cache, 0 ,inputStream.read(cache));
-                outputStream.flush();
-                outputStream2.flush();
-            }
-            inputStream.close();
-            outputStream.close();
-            outputStream2.close();
-        }
-
-        inputStream.close();
-        outputStream.close();
-        outputStream2.close();
-
+            file1.close();
+            file2.close();
+            file3.close();
+        } catch (Exception e) {}
     }
 }

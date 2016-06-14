@@ -11,7 +11,59 @@ package com.javarush.test.level18.lesson10.home10;
 Закрыть потоки. Не использовать try-with-resources
 */
 
-public class Solution {
-    public static void main(String[] args) {
+import java.io.*;
+import java.util.ArrayList;
+
+public class Solution
+{
+    public static void main(String[] args) throws IOException
+    {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int variabl = 1;
+        FileInputStream file1 = null;
+        FileOutputStream file2 = null;
+        ArrayList<String> list = new ArrayList<>();
+        String pop = "";
+
+
+        // System.out.println(weknow[weknow.length-1] + " " + weknow[weknow.length-2]);
+        while (true)
+        {
+           pop = reader.readLine();
+            if (pop.equals("end"))
+            {
+                break;
+            }
+            list.add(pop);
+        }
+
+        while (!(variabl ==list.size()-1)){
+        for(int i = 0; i <list.size();i++)
+        {
+            String[] weknow = list.get(i).split(".part");
+            if (Integer.parseInt(weknow[weknow.length - 1]) == variabl)
+            {
+                File newFile = new File(weknow[weknow.length - 2]);
+                newFile.createNewFile();
+                file1 = new FileInputStream(pop);
+                file2 = new FileOutputStream(newFile);
+
+                while (file1.available() > 0)
+                {
+                    int data = file1.read();
+                    file2.write(data);
+                }
+                variabl++;
+            }
+            else if(list.size()-1==i){i = 0;}
+        }
+          //   if(variabl == list.size()){break;}
+        }
+        reader.close();
+        file1.close();
+        file2.close();
     }
+
+
+
 }
