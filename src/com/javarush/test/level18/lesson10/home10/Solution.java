@@ -13,57 +13,68 @@ package com.javarush.test.level18.lesson10.home10;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Solution
 {
     public static void main(String[] args) throws IOException
     {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        int variabl = 1;
+
         FileInputStream file1 = null;
         FileOutputStream file2 = null;
         ArrayList<String> list = new ArrayList<>();
         String pop = "";
 
-
-        // System.out.println(weknow[weknow.length-1] + " " + weknow[weknow.length-2]);
         while (true)
         {
            pop = reader.readLine();
-            if (pop.equals("end"))
+            if (!pop.equals("end"))
             {
-                break;
+                list.add(pop);
             }
-            list.add(pop);
+           else if(pop.equals("end")){break;}
         }
 
-        while (!(variabl ==list.size()-1)){
+
+        class ArrayCompare implements Comparator<String>
+        {
+            @Override
+            public int compare(String o1,String o2)
+            {
+                return
+                        Integer.parseInt(o1.split(".part")[o1.split(".part").length - 1]) -
+                                Integer.parseInt(o2.split(".part")[o2.split(".part").length - 1]);
+            }
+        }
+        Collections.sort(list,new ArrayCompare());
+
+
         for(int i = 0; i <list.size();i++)
         {
             String[] weknow = list.get(i).split(".part");
-            if (Integer.parseInt(weknow[weknow.length - 1]) == variabl)
-            {
+
                 File newFile = new File(weknow[weknow.length - 2]);
                 newFile.createNewFile();
-                file1 = new FileInputStream(pop);
-                file2 = new FileOutputStream(newFile);
-
+                file1 = new FileInputStream(list.get(i));
+                file2 = new FileOutputStream(newFile,true);
+                byte[] buffer = new byte[1000];
                 while (file1.available() > 0)
                 {
-                    int data = file1.read();
-                    file2.write(data);
+                    int data = file1.read(buffer);
+                    file2.write(buffer,0,data);
                 }
-                variabl++;
+
             }
-            else if(list.size()-1==i){i = 0;}
-        }
-          //   if(variabl == list.size()){break;}
-        }
         reader.close();
         file1.close();
         file2.close();
-    }
 
-
-
+        }
 }
+
+
+
+
+
