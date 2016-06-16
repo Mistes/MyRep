@@ -51,7 +51,7 @@ public class BeatBoxFinal {  // implements MetaEventListener
       public void startUp(String name) {
           userName = name;
           try {
-              Socket sock = new Socket("176.67.22.39", 7676);
+              Socket sock = new Socket("127.0.0.1", 7676);
               out = new ObjectOutputStream(sock.getOutputStream());
               in = new ObjectInputStream(sock.getInputStream());
               Thread remote = new Thread(new RemoteReader());
