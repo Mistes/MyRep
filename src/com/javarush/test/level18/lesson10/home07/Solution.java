@@ -19,10 +19,14 @@ quantity - количество, int
 
 import java.io.*;
 
-public class Solution {
+/*public class Solution {
     public static void main(String[] args) throws IOException{
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader reader2 = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("write path");
         String patch1 = reader.readLine();
+        System.out.println("Write ID");
+        String request = reader2.readLine();
         BufferedReader bf = new BufferedReader(new FileReader(patch1));
         reader.close();
         String line = bf.readLine();
@@ -30,7 +34,7 @@ public class Solution {
         while (line != null)
         {
            String list[] =  line.split(" ");
-            if(args[0].equals(list[0])){
+            if(request.equals(list[0])){
                 result = line;
             }
 
@@ -38,6 +42,7 @@ public class Solution {
             line = bf.readLine();
         }
         bf.close();
+        reader2.close();
         System.out.println(result);
     }
-}
+}*/

@@ -19,7 +19,7 @@ package com.javarush.test.GameReplace.PockerConsole;
         import java.sql.Statement;
 public class JavaToMySQL {
 
-    // JDBC URL, username and password of MySQL server
+   /* // JDBC URL, username and password of MySQL server
     private static final String url = "jdbc:mysql://db4free.net:3306/mypockerbase";
     private static final String user = "pockerbase";
     private static final String password = "pockerbase";
@@ -44,4 +44,4 @@ public class JavaToMySQL {
             System.out.printf("id: %d, name: %s, author: %s %n", id, name, author);
 
         }
-    }}
+    }*/}

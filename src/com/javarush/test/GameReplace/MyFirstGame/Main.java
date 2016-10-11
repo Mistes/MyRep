@@ -1,6 +1,5 @@
 package com.javarush.test.GameReplace.MyFirstGame;
 
-import javax.mail.MessagingException;
 import java.io.IOException;
 
 
@@ -9,12 +8,12 @@ import java.io.IOException;
  */
 public class Main
 {
-    public static void main(String[] args) throws IOException,MessagingException
+    public static void main(String[] args) throws IOException
     {
         Main main = new Main();
         TeePrintStream.FileSaver();
         main.gamemethod();
-        Mail.SuperSending();
+      //  Mail.SuperSending();
 
     }
     public void gamemethod(){
